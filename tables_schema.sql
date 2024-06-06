@@ -3,12 +3,12 @@ DROP TABLE IF EXISTS Employees;
 -- Create table for Employees if it does not exist
 CREATE TABLE IF NOT EXISTS Employees (
 	emp_no INTEGER NOT NULL,
-	emp_title VARCHAR NOT NULL,
-	birth_date VARCHAR,
-	first_name VARCHAR,
-	last_name VARCHAR,
-	sex VARCHAR,
-	hire_date VARCHAR,
+	emp_title VARCHAR(50) NOT NULL,
+	birth_date VARCHAR NOT NULL,
+	first_name VARCHAR(50) NOT NULL,
+	last_name VARCHAR(50) NOT NULL,
+	sex VARCHAR(1) NOT NULL,
+	hire_date VARCHAR NOT NULL,
 	PRIMARY KEY(emp_no)
 );
 
@@ -23,8 +23,8 @@ DROP TABLE IF EXISTS Department;
 	
 -- Create table for Department if it does not exist
 CREATE TABLE IF NOT EXISTS Department(
-	dept_no VARCHAR NOT NULL,
-	dept_name VARCHAR,
+	dept_no VARCHAR(4) NOT NULL,
+	dept_name VARCHAR(100) NOT NULL,
 	PRIMARY KEY(dept_no)
 );
 
@@ -40,7 +40,7 @@ Drop TABLE IF EXISTS Jobs;
 -- Create table for Jobs if it does not exist
 CREATE TABLE IF NOT EXISTS Jobs(
 	emp_no INTEGER NOT NULL,
-	dept_no VARCHAR NOT NULL,
+	dept_no VARCHAR(4) NOT NULL,
 	FOREIGN KEY(dept_no) REFERENCES Department(dept_no),
 	FOREIGN KEY(emp_no) REFERENCES Employees(emp_no),
 	PRIMARY KEY(dept_no, emp_no) -- Composite primary key
@@ -57,7 +57,7 @@ DROP TABLE IF EXISTS Managers;
 
 -- Create table for Managers if it does not exist
 CREATE TABLE IF NOT EXISTS Managers(
-	dept_no VARCHAR NOT NULL,
+	dept_no VARCHAR(4) NOT NULL,
 	emp_no INTEGER NOT NULL,
 	FOREIGN KEY(dept_no) REFERENCES Department(dept_no),
 	FOREIGN KEY(emp_no) REFERENCES Employees(emp_no),
@@ -75,8 +75,8 @@ DROP TABLE IF EXISTS Titles;
 
 -- Create table for Titles if it does not exist
 CREATE TABLE IF NOT EXISTS Titles(
-	title_id VARCHAR NOT NULL,
-	title VARCHAR NOT NULL,
+	title_id VARCHAR(3) NOT NULL,
+	title VARCHAR(100) NOT NULL,
 	PRIMARY KEY(title_id)
 );
 
